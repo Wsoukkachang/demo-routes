@@ -13,17 +13,28 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
+    - name: Change to app directory
+      run: cd my-app
+      working-directory: ./my-app
+
+    - name: List directory contents for debugging
+      run: ls -la
+      working-directory: ./my-app
+
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
         node-version: '16'  # or the version you are using
+      working-directory: ./my-app
 
     - name: Install dependencies
       run: npm install
+      working-directory: ./my-app
 
     - name: Build and Deploy
       env:
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_ACCESS_KEY_ID: AKIAZI2LIPXU3VW7TJGU
+        AWS_SECRET_ACCESS_KEY: Hc4CgKOPniqv3y0JrazPG3Eu/7mWw5M8SoeKoRND
         AWS_REGION: 'us-west-2'  # or your region
       run: npm run deploy
+      working-directory: ./my-app
