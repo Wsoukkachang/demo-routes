@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Navigate to the directory containing the Next.js app
+cd "$(dirname "$0")"
+
 # Check if the out directory exists
 if [ -d "out" ]; then
   # Generate the router paths file
@@ -7,7 +10,7 @@ if [ -d "out" ]; then
   echo "Router paths file created successfully."
 
   # Sync the output directory with the S3 bucket
-  AWS s3 sync --delete out s3://my-nextjs-demo-bucket/
+  AWS s3 sync --delete out s3://YOUR_BUCKET_NAME/
   echo "S3 sync completed successfully."
 else
   echo "Error: The 'out' directory does not exist. Ensure 'npx next export' ran successfully."
