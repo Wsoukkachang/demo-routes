@@ -11,6 +11,8 @@ export default function Home() {
     router.push(`/dynamic/${shareid}`);
   };
 
+  // Test change commmit
+
   return (
     <div>
       <h1>Home Page</h1>
